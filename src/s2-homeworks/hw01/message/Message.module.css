@@ -30,15 +30,17 @@ background-color: #0066CC;
     padding: 10px;
 }
 
-.text:after {
-    content: '';
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-radius: 5px;
-    border-width: 20px 0 0 20px;
-    border-color: #0066CC #0066CC #0066CC #0066CC;
+.text::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 100%;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(40px at top left, transparent 50%, rgba(79, 79, 79, 0.6) 0) no-repeat right bottom;
 }
+
 
 .name {
 
