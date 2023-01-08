@@ -1,3 +1,4 @@
+
 import React, {FC} from 'react'
 import burgerIcon from './burger.svg'
 import s from './Header.module.css'
@@ -6,12 +7,15 @@ import {PATH} from '../Pages'
 
 type PropsType = {
     handleOpen: () => void
+    open: boolean
 }
 
-export const Header: FC<PropsType> = ({handleOpen}) => {
+export const Header: FC<PropsType> = ({open, handleOpen}) => {
     // hw5-menu изначально отсутствует, при нажатии на бургер - появляется, при повторном нажатии исчезает
     const location = useLocation()
     const currentPath = location.pathname
+
+    const headerClass = !open ? s.header : ''
 
     const pageName =
         currentPath === PATH.PRE_JUNIOR
@@ -23,7 +27,7 @@ export const Header: FC<PropsType> = ({handleOpen}) => {
                     : 'Error'
     return (
         <>
-            <div id={'hw5-header'} className={s.header}>
+            <div id={'hw5-header'} className={headerClass}>
                 <img
                     src={burgerIcon}
                     id={'hw5-burger-menu'}
@@ -34,5 +38,4 @@ export const Header: FC<PropsType> = ({handleOpen}) => {
                 <h1>{pageName}</h1>
             </div>
         </>
-    )
-}
+    )}
